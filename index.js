@@ -9,10 +9,7 @@ const sprintfJs = require("sprintf-js");
 const sprintf = sprintfJs.sprintf;
 const log = console.log;
 
-const sep = (() => {
-	return process.platform != "win32" ? ";" : " &&";
-})();
-
+const sep = process.platform != "win32" ? ";" : " &&";
 const rl = readline.createInterface({
 	input: process.stdin,
 	output: process.stdout
@@ -90,7 +87,7 @@ const prompt = async () => {
 
 	className = entry.substring(0, entry.indexOf("."));
 	txtApp = sprintf(variables.txtApp, className);
-	log(chalk.bgMagenta("\n" + className + ":"));
+	log(chalk.bgMagenta("\nlib/" + className + ".ts:"));
 	log(txtApp);
 
 	let result = true;
@@ -101,7 +98,6 @@ const prompt = async () => {
 			resolve();
 		});
 	})
-	log(result);
 
 	if (!result) {
 		reset();
@@ -141,19 +137,9 @@ const main = async () => {
 	await isElevated().then(elevated => {
 		isAdmin = elevated;
 	});
-	// if (!isAdmin) {
-	// 	log(chalk.yellow(
-	// 		"Admin privileges not detected! \nThis project generator requires " +
-	// 		"admin privileges in order to create the necessary symbolic links. "
-	// 	));
-	// 	rl.close();
-	// 	return;
-	// }
 
 	variables.txtPackage = variables.txtPackage.replace(/&&/g, sep);
 
-	log("dirname: " + __dirname);
-	log("cwd: " + process.cwd());
 	log(chalk.bgMagenta("Strum2D Project Generator"));
 	log("-------------------------");
 	await prompt();
