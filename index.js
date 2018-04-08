@@ -23,17 +23,17 @@ var txtWebpack = "";
 var txtApp = "";
 
 var name = "";
-var version = "1.0.0";
+var version = "";
 var description = "";
-var entry = "App.js";
+var entry = "";
 var author = "";
-var license = "MIT";
+var license = "";
 
 const reset = () => {
 	name = "";
 	version = "1.0.0";
 	description = "";
-	entry = "app.ts";
+	entry = "App.js";
 	author = "";
 	license = "MIT";
 }
@@ -191,5 +191,6 @@ function copyFolderRecursiveSync(source, target) {
 	traverse("");
 }
 
+reset();
 main();
 
