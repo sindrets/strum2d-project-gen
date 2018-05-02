@@ -57,9 +57,9 @@ export class %1$s extends Strum2d.Scene {
 	 */
 	initScene(): void {}
 
-  /**
-   * Called on every tick while this scene is loaded
-   */
+	/**
+	 * Called on every tick while this scene is loaded
+	 */
 	tick(): void {}
 
 }
